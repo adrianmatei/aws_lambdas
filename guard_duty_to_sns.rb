@@ -2,7 +2,7 @@ require 'aws-sdk-sns'
 require 'json'
 
 def lambda_handler(event:, context:)
-  sns = Aws::SNS::Client.new
+  sns = Aws::SNS::Client.new(region: '')
   topic_arn = "" # required
 
   message = "Threat type: #{event['detail']['type']} \n"

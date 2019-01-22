@@ -3,7 +3,7 @@ require 'json'
 
 def lambda_handler(event:, context:)
   detail = event['detail']
-  iam = Aws::IAM::Client.new
+  iam = Aws::IAM::Client.new(region: '')
 
   if detail['service']['serviceName'] == 'guardduty' && detail['service']['resourceRole'] == "TARGET" && detail['resource']['resourceType'] == "AccessKey" && detail['severity'] >= 5
     access_details = detail['resource']['accessKeyDetails']
